@@ -15,12 +15,13 @@ bool Find(int target,vector<vector<int> > array)
 {
 	int row_size = array.size();
 	int col_size = array[0].size();
-	cout << row_size << " " << col_size << endl ;
+	//cout << row_size << " " << col_size << endl ;
 
 	int i,j;
-	for(i=0;i<row_size;i++)
+	/*
+	for(i=row_size-1;i>=0;)
 	{
-		for(j=0;j<col_size;j++)
+		for(j=0;j<col_size;)
 		{
 			if(target == array[i][j])
 				return true;
@@ -34,7 +35,24 @@ bool Find(int target,vector<vector<int> > array)
 				j++;
 				continue;
 			}
-		}	
+		}
+	}
+	*/
+	
+	for(i = row_size - 1, j = 0; i >= 0 && j<col_size;)
+	{
+			if(target == array[i][j])
+				return true;
+			if(target < array[i][j])
+			{
+				i--;
+				continue;
+			}
+			if(target>array[i][j])
+			{
+				j++;
+				continue;
+			}	
 	}
 	return false;
 }
@@ -51,4 +69,9 @@ int main()
 2 4 9 12
 4 7 10 13
 6 8 11 15
+
+1,2,8,9],
+[2,4,9,12],
+[4,7,10,13],
+6,8,11,15
 */
